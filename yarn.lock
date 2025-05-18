@@ -1094,6 +1094,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@callstack/react-theme-provider@npm:^3.0.9":
+  version: 3.0.9
+  resolution: "@callstack/react-theme-provider@npm:3.0.9"
+  dependencies:
+    deepmerge: "npm:^3.2.0"
+    hoist-non-react-statics: "npm:^3.3.0"
+  peerDependencies:
+    react: ">=16.3.0"
+  checksum: 10c0/ac3463383c35e1a4ef813e869532bf86d3e83a4c211b00616c832a5f08545f04f07f769726664b5010124575af2cf8152aabfb7d4c37a64b22ae8a7f9490df0e
+  languageName: node
+  linkType: hard
+
 "@egjs/hammerjs@npm:^2.0.17":
   version: 2.0.17
   resolution: "@egjs/hammerjs@npm:2.0.17"
@@ -3517,7 +3529,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-convert@npm:^1.9.0":
+"color-convert@npm:^1.9.0, color-convert@npm:^1.9.3":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
   dependencies:
@@ -3549,13 +3561,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-string@npm:^1.9.0":
+"color-string@npm:^1.6.0, color-string@npm:^1.9.0":
   version: 1.9.1
   resolution: "color-string@npm:1.9.1"
   dependencies:
     color-name: "npm:^1.0.0"
     simple-swizzle: "npm:^0.2.2"
   checksum: 10c0/b0bfd74c03b1f837f543898b512f5ea353f71630ccdd0d66f83028d1f0924a7d4272deb278b9aef376cacf1289b522ac3fb175e99895283645a2dc3a33af2404
+  languageName: node
+  linkType: hard
+
+"color@npm:^3.1.2":
+  version: 3.2.1
+  resolution: "color@npm:3.2.1"
+  dependencies:
+    color-convert: "npm:^1.9.3"
+    color-string: "npm:^1.6.0"
+  checksum: 10c0/39345d55825884c32a88b95127d417a2c24681d8b57069413596d9fcbb721459ef9d9ec24ce3e65527b5373ce171b73e38dbcd9c830a52a6487e7f37bf00e83c
   languageName: node
   linkType: hard
 
@@ -3788,6 +3810,13 @@ __metadata:
   version: 0.1.4
   resolution: "deep-is@npm:0.1.4"
   checksum: 10c0/7f0ee496e0dff14a573dc6127f14c95061b448b87b995fc96c017ce0a1e66af1675e73f1d6064407975bc4ea6ab679497a29fff7b5b9c4e99cb10797c1ad0b4c
+  languageName: node
+  linkType: hard
+
+"deepmerge@npm:^3.2.0":
+  version: 3.3.0
+  resolution: "deepmerge@npm:3.3.0"
+  checksum: 10c0/143bc6b6cd8a1216565c61c0fe38bf43fe691fb6876fb3f5727c6e323defe4e947c68fbab9957e17e837c5594a56af885c5834d23dc6cf2c41bef97090005104
   languageName: node
   linkType: hard
 
@@ -4572,6 +4601,19 @@ __metadata:
     expo: "*"
     react: "*"
   checksum: 10c0/9d1993f7b17e6c36d707501ba9d983fe7e640317af7f2ecee17255f2c8c7bae39bdb3dfffcc67afcd36457bb60a6799dbaa2414922507ef01298cbe34e8eae8e
+  languageName: node
+  linkType: hard
+
+"expo-linking@npm:^7.1.5":
+  version: 7.1.5
+  resolution: "expo-linking@npm:7.1.5"
+  dependencies:
+    expo-constants: "npm:~17.1.6"
+    invariant: "npm:^2.2.4"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/ed976f27aab12063702b5e4fca56c564133f01f8efa7e9980b7aa8de17ad987cf8cb7ee9117015672193e9400b785ec289a7553c734cddc807b17495d4551b98
   languageName: node
   linkType: hard
 
@@ -7366,6 +7408,7 @@ __metadata:
     eslint-config-prettier: "npm:^10.1.5"
     eslint-plugin-prettier: "npm:^5.4.0"
     expo: "npm:~53.0.9"
+    expo-linking: "npm:^7.1.5"
     expo-router: "npm:~5.0.6"
     expo-splash-screen: "npm:^0.30.8"
     husky: "npm:^9.1.7"
@@ -7375,6 +7418,7 @@ __metadata:
     react-dom: "npm:19.0.0"
     react-native: "npm:0.79.2"
     react-native-gesture-handler: "npm:~2.24.0"
+    react-native-paper: "npm:^5.14.4"
     react-native-reanimated: "npm:~3.17.4"
     react-native-safe-area-context: "npm:5.4.0"
     react-native-screens: "npm:~4.10.0"
@@ -7676,6 +7720,21 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/b7a37437f439b1e27a4d980de01994aa71b9091dc3ed00c21172d5505fb11978cd5ed3a43f97c89d502a3a08cf26e5cea6435b8d6e93d3557a92dd43563f7021
+  languageName: node
+  linkType: hard
+
+"react-native-paper@npm:^5.14.4":
+  version: 5.14.4
+  resolution: "react-native-paper@npm:5.14.4"
+  dependencies:
+    "@callstack/react-theme-provider": "npm:^3.0.9"
+    color: "npm:^3.1.2"
+    use-latest-callback: "npm:^0.2.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: "*"
+  checksum: 10c0/81a378bcac96ac057b322d9ceec8e69c3d93dff8c7dce648cb2779226dc535611b9322e42891f86aeb64795fc7a562e9a9796c39d75199fb074936aae79100a8
   languageName: node
   linkType: hard
 
