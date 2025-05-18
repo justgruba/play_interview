@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 
 export default function RootLayout() {
 	return <Stack screenOptions={{
+		animation: 'fade',
         headerStyle: {
           backgroundColor: '#f4511e',
         },
@@ -10,7 +11,7 @@ export default function RootLayout() {
       }}
 	>
 		<Stack.Screen name='index' options={{headerTitle: 'Zadanie rekrutacyjne'}}/>
-		<Stack.Screen name='form' />
-		<Stack.Screen name='api'/>
+		<Stack.Screen name='form'  options={{headerTitle: ''}}/>
+		<Stack.Screen name='api'  options={{headerTitle: ''}}/>
 	</Stack>;
 }

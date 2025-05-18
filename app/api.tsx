@@ -1,11 +1,9 @@
 import { View , Text} from "react-native"
 
-const Api = () => {
+export const Api = () => {
     return(
         <View>
-            <Text>API komponent</Text>
+            <Text>Api komponent</Text>
         </View>
     )
 }
-
-export default Api;
