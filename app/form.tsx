@@ -19,13 +19,18 @@ export type FormValues = {
 
 const Form = () => {
 	const [visible, setVisible] = useState(false);
-	const { control, handleSubmit } = useForm<FormValues>({
+	const { control, handleSubmit, reset } = useForm<FormValues>({
 		resolver: zodResolver(schema),
+		defaultValues: {
+			name: '',
+			email: '',
+		},
 	});
 
 	const onSubmit = (data: FormValues) => {
 		console.log('Dane formularza:', data);
 		setVisible(true);
+		reset();
 	};
 
 	const hideModal = () => setVisible(false);
