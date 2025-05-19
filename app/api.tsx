@@ -2,9 +2,11 @@ import { fetchQuote } from '@/api/quotes';
 import { View, Text, StyleSheet } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ActivityIndicator, Button, Card } from 'react-native-paper';
+import { ActivityIndicator, Button, Card, Switch } from 'react-native-paper';
+import { useEffect, useState } from 'react';
 
 const Api = () => {
+	const [autoRefresh, setAutoRefresh] = useState(false);
 	const {
 		data: quote,
 		error,
@@ -14,6 +16,20 @@ const Api = () => {
 		queryKey: ['quote'],
 		queryFn: fetchQuote,
 	});
+
+	useEffect(() => {
+		let interval: number | null = null;
+
+		if (autoRefresh) {
+			interval = setInterval(() => {
+				refetch();
+			}, 10000);
+		}
+
+		return () => {
+			if (interval !== null) clearInterval(interval);
+		};
+	}, [autoRefresh, refetch]);
 
 	if (isLoading) {
 		return (
@@ -42,9 +58,13 @@ const Api = () => {
 						<Text style={styles.author}>{quote?.author}</Text>
 					</Card.Content>
 				</Card>
-				<Button style={styles.button} onPress={() => refetch()}>
-					Wylosuj nowy
-				</Button>
+				<View style={styles.button}>
+					<View style={styles.autoRefechButton}>
+						<Text>Auto losowanie</Text>
+						<Switch value={autoRefresh} onValueChange={() => setAutoRefresh(!autoRefresh)} />
+					</View>
+					<Button onPress={() => refetch()}>Wylosuj nowy</Button>
+				</View>
 			</View>
 		</SafeAreaView>
 	);
@@ -74,5 +94,12 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		marginHorizontal: 50,
+		gap: 30,
+	},
+	autoRefechButton: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 20,
 	},
 });
