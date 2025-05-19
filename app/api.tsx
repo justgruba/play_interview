@@ -2,13 +2,14 @@ import { fetchQuote } from '@/api/quotes';
 import { View, Text, StyleSheet } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ActivityIndicator, Card } from 'react-native-paper';
+import { ActivityIndicator, Button, Card } from 'react-native-paper';
 
 const Api = () => {
 	const {
 		data: quote,
 		error,
 		isLoading,
+		refetch,
 	} = useQuery({
 		queryKey: ['quote'],
 		queryFn: fetchQuote,
@@ -33,7 +34,7 @@ const Api = () => {
 	}
 
 	return (
-		<SafeAreaView style={{ flex: 1 }} edges={['left', 'right']}>
+		<SafeAreaView style={{ flex: 1 }} edges={['left', 'right', 'bottom']}>
 			<View style={styles.container}>
 				<Card mode="contained" style={styles.card}>
 					<Card.Content>
@@ -41,6 +42,9 @@ const Api = () => {
 						<Text style={styles.author}>{quote?.author}</Text>
 					</Card.Content>
 				</Card>
+				<Button style={styles.button} onPress={() => refetch()}>
+					Wylosuj nowy
+				</Button>
 			</View>
 		</SafeAreaView>
 	);
@@ -51,6 +55,7 @@ export default Api;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		justifyContent: 'space-between',
 	},
 	card: {
 		margin: 15,
@@ -66,5 +71,8 @@ const styles = StyleSheet.create({
 	author: {
 		fontSize: 16,
 		color: 'gray',
+	},
+	button: {
+		marginHorizontal: 50,
 	},
 });
