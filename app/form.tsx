@@ -1,38 +1,47 @@
-import { View } from "react-native";
-import { useForm } from "react-hook-form";
-import { Input } from "@/components/Input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "react-native-paper";
-import { z } from "zod";
+import { View, StyleSheet } from 'react-native';
+import { useForm } from 'react-hook-form';
+import { Input } from '@/components/Input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from 'react-native-paper';
+import { z } from 'zod';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const schema = z.object({
-  name: z.string().min(5, "Imię jest wymagane"),
-  email: z.string().email("Nieprawidłowy adres email"),
+	name: z.string().min(5, 'Imię musi zawierać więcej niż 5 znaków!'),
+	email: z.string().email('Nieprawidłowy adres e-mail!'),
 });
 
 export type FormValues = {
-  email: string;
-  name: string;
+	email: string;
+	name: string;
 };
 
 const Form = () => {
-  const { control, handleSubmit } = useForm<FormValues>({
-    resolver: zodResolver(schema),
-  });
+	const { control, handleSubmit } = useForm<FormValues>({
+		resolver: zodResolver(schema),
+	});
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Dane formularza:", data);
-  };
+	const onSubmit = (data: FormValues) => {
+		console.log('Dane formularza:', data);
+	};
 
-  return (
-    <View>
-      <Input control={control} name="name" />
-      <Input control={control} name="email" />
-      <Button mode="contained" onPress={handleSubmit(onSubmit)}>
-        Wyślij
-      </Button>
-    </View>
-  );
+	return (
+		<SafeAreaView style={styles.container}>
+			<Input control={control} name="name" />
+			<Input control={control} name="email" />
+			<Button mode="contained" onPress={handleSubmit(onSubmit)}>
+				Wyślij
+			</Button>
+		</SafeAreaView>
+	);
 };
 
 export default Form;
+
+const styles = StyleSheet.create({
+	container: {
+		justifyContent: 'center',
+		margin: 20,
+		gap: 20,
+	},
+});
