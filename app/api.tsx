@@ -13,11 +13,12 @@ const Api = () => {
 	const {
 		data: quote,
 		error,
-		isLoading,
+		isFetching,
 		refetch,
 	} = useQuery({
 		queryKey: ['quote'],
 		queryFn: fetchQuote,
+		staleTime: 0,
 	});
 
 	useEffect(() => {
@@ -47,7 +48,7 @@ const Api = () => {
 		};
 	}, [autoRefresh, refetch]);
 
-	if (isLoading) {
+	if (!quote && isFetching) {
 		return (
 			<View style={styles.container}>
 				<ActivityIndicator size="large" />

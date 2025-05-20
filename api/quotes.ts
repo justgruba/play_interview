@@ -1,7 +1,7 @@
 import { axios } from './axios';
 
 type QuoteType = {
-	id: 512;
+	id: number;
 	quote: string;
 	author: string;
 };
